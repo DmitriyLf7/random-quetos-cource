@@ -9,14 +9,33 @@ const quotes = [
   "Your time is limited, so don’t waste it living someone else’s life.",
 ];
 
-// Получаем элементы
+// Элементы
 const quoteText = document.getElementById("quote");
 const button = document.getElementById("btn");
+const soundBtn = document.getElementById("soundBtn");
 
-// Переменная для хранения предыдущей цитаты
+// Флаг голосовой озвучки
+let voiceEnabled = true;
+
+// Чтобы не повторялась та же цитата
 let lastIndex = -1;
 
-// Функция генерации цитаты без повторения
+// 🎤 Озвучивание текста
+function speakText(text) {
+  if (!voiceEnabled) return;
+
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "en-US";
+  utterance.rate = 1;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+
+  window.speechSynthesis.speak(utterance);
+}
+
+// Генерация цитаты
 function generateQuote() {
   let randomIndex;
 
@@ -25,8 +44,31 @@ function generateQuote() {
   } while (randomIndex === lastIndex);
 
   lastIndex = randomIndex;
-  quoteText.textContent = quotes[randomIndex];
+
+  // Анимация исчезновения
+  quoteText.classList.add("fade");
+
+  setTimeout(() => {
+    const newQuote = quotes[randomIndex];
+
+    quoteText.textContent = newQuote;
+    quoteText.classList.remove("fade");
+
+    // 🎤 Озвучка
+    speakText(newQuote);
+  }, 400);
 }
 
-// Обработчик кнопки
+// Переключатель озвучки
+soundBtn.addEventListener("click", () => {
+  voiceEnabled = !voiceEnabled;
+
+  if (!voiceEnabled) {
+    window.speechSynthesis.cancel();
+  }
+
+  soundBtn.textContent = voiceEnabled ? "🔊" : "🔇";
+});
+
+// Кнопка генерации
 button.addEventListener("click", generateQuote);

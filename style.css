@@ -2,15 +2,16 @@ body {
   /* margin: 0;
   padding: 0; */
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #070707;
   /* height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center; */
+  transition: background-color 0.6s ease;
 }
 
 .container {
-  background: #ffffff;
+  background: #070707;
   padding: 30px;
   margin: auto;
   width: 400px;
@@ -21,26 +22,75 @@ body {
 
 h1 {
   margin-bottom: 20px;
-  color: #333;
+  color: #aed6f3;
 }
 
 #quote {
   font-size: 18px;
-  color: #555;
+  color: #d6eadb;
   margin-bottom: 25px;
   line-height: 1.5;
 }
 
-button {
+/* button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff;
+  background-color: #899bf3;
   color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+} */
+
+/* button:hover {
+  background-color: #0056b3;
+} */
+
+#quote {
+  transition: opacity 0.4s ease;
+  opacity: 1;
 }
 
-button:hover {
-  background-color: #0056b3;
+.fade {
+  opacity: 0;
+}
+
+/* #soundBtn {
+  margin-top: 15px;
+  background-color: #cad7e3;
+}
+
+#soundBtn:hover {
+  background-color: #616568;
+} */
+
+.buttons {
+  display: flex;
+  align-items: center; /* 🔑 выравнивание по одной линии */
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Общие стили для кнопок */
+.buttons button {
+  height: 45px; /* 🔑 одинаковая высота */
+  padding: 0 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Кнопка цитаты */
+#btn {
+  background-color: #8f9cf5;
+  color: white;
+}
+
+/* Кнопка звука */
+#soundBtn {
+  background-color: #dbe3ea;
+  font-size: 20px;
+  width: 50px; /* квадратная кнопка */
+  padding: 0;
 }
