@@ -11,11 +11,24 @@
   <body>
     <div class="container">
       <h1>Random Quote Generator</h1>
-      <p id="quote">Click the button to generate a quote!</p>
+
+      <div class="quote-wrapper">
+        <p id="quote">Click the button to generate a quote!</p>
+
+        <!-- Иконка избранного -->
+        <span id="favoriteIcon" title="Добавить в избранное">☆</span>
+      </div>
+
       <div class="buttons">
         <button id="btn">New Quote</button>
         <button id="soundBtn">🔊</button>
       </div>
+    </div>
+
+    <!-- Блок избранного -->
+    <div class="favorites">
+      <h3>⭐ Избранные цитаты</h3>
+      <ul id="favoritesList"></ul>
     </div>
 
     <!-- Link JavaScript -->
